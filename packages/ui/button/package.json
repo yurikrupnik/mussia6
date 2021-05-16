@@ -12,6 +12,9 @@
     "dist"
   ],
   "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yurikrupnik/mussia6.git",
@@ -46,5 +49,5 @@
       "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
     }
   },
-  "gitHead": "c920671a582baaf6b16d9203bcbe17baec14df20"
+  "gitHead": "d534f7f6e2ab76ac9d612e307b187429c7a9b38e"
 }
