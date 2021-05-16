@@ -34,7 +34,7 @@ module.exports = {
             pagePerSection: true,
             name: "NPM packages",
             // content: "packages/**/README.md",
-            components: "packages/**/src/*.tsx",
+            components: "packages/ui/**/src/*.tsx",
             exampleMode: "expand", // 'hide' | 'collapse' | 'expand'
             usageMode: "expand", // 'hide' | 'collapse' | 'expand'
             ignore: ["**/__tests__/*.tsx"]
@@ -42,7 +42,7 @@ module.exports = {
         {
             name: "Jarvis",
             // content: "docs/ui.md",
-            components: "packages/jarvis/components/**/*.tsx",
+            components: "packages/webclients/alfred/components/**/*.tsx",
             exampleMode: "expand", // 'hide' | 'collapse' | 'expand'
             usageMode: "expand", // 'hide' | 'collapse' | 'expand'
             ignore: ["**/__tests__/*.tsx"]
@@ -50,15 +50,14 @@ module.exports = {
         {
             name: "Webclient",
             // content: "docs/ui.md",
-            components: "packages/webclient/components/**/*.tsx",
+            components: "packages/webclients/alfred/components/**/*.tsx",
             exampleMode: "expand", // 'hide' | 'collapse' | 'expand'
             usageMode: "expand", // 'hide' | 'collapse' | 'expand'
             ignore: ["**/__tests__/*.tsx"]
         },
         {
             name: "Typedoc",
-            href:
-                "http://localhost:63342/perimeter81-monorepo/docs/typedoc/index.html"
+            href: "http://localhost:63342/perimeter81-monorepo/docs/typedoc/index.html"
         },
         {
             name: "Swagger",
