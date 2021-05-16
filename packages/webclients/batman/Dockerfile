@@ -1,0 +1,23 @@
+FROM node:14 AS builder
+ARG port=3000
+ENV PORT=$port
+
+WORKDIR /usr/app
+COPY . .
+RUN npm i
+RUN npm run build
+#RUN ls -a
+#
+#
+#FROM node:14-alpine
+#
+#ARG port=3000
+#ENV PORT=$port
+#
+#WORKDIR /usr/src/app
+#COPY --from=builder /usr/app/.next ./.next
+#COPY --from=builder /usr/app/package.json .
+#RUN npm install
+EXPOSE ${PORT}
+
+CMD ["npm", "run", "start"]

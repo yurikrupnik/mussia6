@@ -40,15 +40,15 @@ services:
     command: npm run dev
 
   billing:
-    image: perimeter81/billing-dev
+    image: billing-dev
     build:
       context: packages/services/billing
       dockerfile: Dockerfile.dev
       args:
-        - modulePath=/packages/billing
+        - modulePath=/packages/services/billing
     container_name: billing-dev
-#    volumes:
-#      - ./packages/billing/src:/usr/src/packages/billing
+    #    volumes:
+    #      - ./packages/billing/src:/usr/src/packages/billing
     environment:
       - NODE_ENV_DOCKER=true
       #            - PORT=5000

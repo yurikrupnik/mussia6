@@ -67,7 +67,7 @@
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
   },
   "typedocOptions": {
-    "entryPoints": ["packages/button/src", "packages/jarvis/src", "packages/jarvis/middlewares", "packages/jarvis/hooks", "packages/webclient/src"],
+    "entryPoints": ["packages/ui/button/src", "packages/webclients/alfred/src", "packages/webclients/alfred/middlewares", "packages/webclients/alfred/hooks", "packages/webclients/batman/src"],
     "out": "docs/typedoc",
     "exclude": "**/**/__tests__/*",
 //    "exclude": "**/*+(index|.spec|.e2e).tsx"
