@@ -5,35 +5,35 @@ services:
     ports:
       - 27017:27017
 
-  jarvis:
-    image: permimeter81/jarvis-dev
+  batman:
+    image: batman-dev
     build:
-      context: packages/jarvis
+      context: packages/webclients/batman
       dockerfile: Dockerfile.dev
-    container_name: jarvis-dev
+    container_name: batman-dev
     restart: always
     volumes:
-      - ./packages/jarvis/pages:/usr/src/pages
+      - ./packages/webclients/batman/pages:/usr/src/pages
     #        todo finish adding all needed files for refresh or add dynamic blob
     ports:
-      - 3000:3000
+      - 4000:4000
       - 6060:6060
     depends_on:
       - db
     command: npm run dev
-
-  webclient:
-    image: permimeter81/webclient-dev
+#
+  alfred:
+    image: alfred-dev
     build:
-      context: packages/webclient
+      context: packages/webclients/alfred
       dockerfile: Dockerfile.dev
-    container_name: webclient-dev
+    container_name: alfred-dev
     restart: always
     volumes:
-      - ./packages/webclient/pages:/usr/src/pages
+      - ./packages/webclients/alfred/pages:/usr/src/pages
     #        todo finish adding all needed files for refresh or add dynamic blob
     ports:
-      - 4000:3000
+      - 3000:3000
       - 6060:6060
     depends_on:
       - db
@@ -47,8 +47,8 @@ services:
       args:
         - modulePath=/packages/services/billing
     container_name: billing-dev
-    #    volumes:
-    #      - ./packages/billing/src:/usr/src/packages/billing
+    volumes:
+        - ./packages/services/billing/src:/app/packages/services/billing/src
     environment:
       - NODE_ENV_DOCKER=true
       #            - PORT=5000

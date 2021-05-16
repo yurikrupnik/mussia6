@@ -12,9 +12,7 @@ const Home: React.FC = () => (
 
         <main className={styles.main}>
             <Link href="/dashboard">Go to dashboard and see api at work</Link>
-            <h1 className={styles.title}>
-                Welcome to Webclient of Perimeter81
-            </h1>
+            <h1 className={styles.title}>Welcome to Batman</h1>
 
             <p className={styles.description}>
                 Get started by editing
