@@ -46,5 +46,5 @@
       "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
     }
   },
-  "gitHead": "a7c685858d019e6d9d8c520abc4573c26b3d95bc"
+  "gitHead": "c920671a582baaf6b16d9203bcbe17baec14df20"
 }
