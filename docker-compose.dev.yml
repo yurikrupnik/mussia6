@@ -1,0 +1,61 @@
+version: "3"
+services:
+  db:
+    image: mongo
+    ports:
+      - 27017:27017
+
+  jarvis:
+    image: permimeter81/jarvis-dev
+    build:
+      context: packages/jarvis
+      dockerfile: Dockerfile.dev
+    container_name: jarvis-dev
+    restart: always
+    volumes:
+      - ./packages/jarvis/pages:/usr/src/pages
+    #        todo finish adding all needed files for refresh or add dynamic blob
+    ports:
+      - 3000:3000
+      - 6060:6060
+    depends_on:
+      - db
+    command: npm run dev
+
+  webclient:
+    image: permimeter81/webclient-dev
+    build:
+      context: packages/webclient
+      dockerfile: Dockerfile.dev
+    container_name: webclient-dev
+    restart: always
+    volumes:
+      - ./packages/webclient/pages:/usr/src/pages
+    #        todo finish adding all needed files for refresh or add dynamic blob
+    ports:
+      - 4000:3000
+      - 6060:6060
+    depends_on:
+      - db
+    command: npm run dev
+
+  billing:
+    image: perimeter81/billing-dev
+    build:
+      context: packages/services/billing
+      dockerfile: Dockerfile.dev
+      args:
+        - modulePath=/packages/billing
+    container_name: billing-dev
+#    volumes:
+#      - ./packages/billing/src:/usr/src/packages/billing
+    environment:
+      - NODE_ENV_DOCKER=true
+      #            - PORT=5000
+      - DB_USER=admin
+      - MONGODB_URI=mongodb://0.0.0.0/jarvis
+      - DB_PASSWORD=elmtmVSesRtpz3de
+      - DATABASE_URL=@cluster0.xliif.gcp.mongodb.net/
+    ports:
+      - 5000:8080
+    command: npm run dev

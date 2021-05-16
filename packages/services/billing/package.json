@@ -1,0 +1,38 @@
+{
+  "name": "billing",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "yurikrupnik <krupnik.yuri@gmail.com>",
+  "homepage": "https://github.com/yurikrupnik/mussia6/tree/main/packages/billing#readme",
+  "license": "ISC",
+  "main": "dist/server.js",
+  "files": [
+    "dist"
+  ],
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yurikrupnik/mussia6.git",
+    "directory": "packages/services/billing"
+  },
+  "scripts": {
+    "dev": "webpack --config=../../../webpack.config.server.js -w --color",
+    "prebuild": "rimraf dist",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx --color",
+    "test": "jest src --colors --detectOpenHandles",
+    "build": "run-p build:code",
+    "build:code": "webpack --config=../../../webpack.config.server.js --color",
+    "tsc": "tsc"
+  },
+  "bugs": {
+    "url": "https://github.com/yurikrupnik/mussia6/issues"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.11",
+    "@types/supertest": "^2.0.11",
+    "supertest": "^6.1.3"
+  }
+}
