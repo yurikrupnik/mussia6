@@ -1,5 +1,5 @@
 {
-  "name": "@mussia6/button",
+  "name": "@creativearis/button",
   "version": "1.0.2",
   "description": "> TODO: description",
   "author": "yurikrupnik <krupnik.yuri@gmail.com>",
@@ -46,5 +46,5 @@
       "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
     }
   },
-  "gitHead": "924afa4b7a3fddb66e431edd533749fb44540ac1"
+  "gitHead": "a912fea7276cdea02073d939c5f5148a4e5810ee"
 }
