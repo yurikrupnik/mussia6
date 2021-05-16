@@ -4,12 +4,12 @@ services:
         image: mongo
         ports:
             - 27017:27017
-    jarvis:
-        image: perimeter81/jarvis
+    alfred:
+        image: gcr.io/mussia6/alfred
         build:
-            context: packages/jarvis
+            context: packages/webclients/alfred
             dockerfile: Dockerfile
-        container_name: jarvis
+        container_name: alfred
         environment:
             - NODE_ENV_DOCKER=true
             - DB_USER=admin
@@ -21,21 +21,16 @@ services:
         #            - DATABASE_URL=mongodb://db/rt-react
         ports:
             - 3000:3000
-#            - 4001:4001
-#            - 7000:7000
-#            - 7070:7070
-#        volumes:
-#            - ./:/usr/app/src
         command: npm run start
 #        depends_on:
 #            - db
 #
-    webclient:
-        image: perimeter81/webclient
+    batman:
+        image: gcr.io/mussia6/batman
         build:
-            context: packages/webclient
+            context: packages/webclients/batman
             dockerfile: Dockerfile
-        container_name: webclient
+        container_name: batman
         environment:
             - NODE_ENV_DOCKER=true
             - DB_USER=admin
@@ -52,12 +47,12 @@ services:
         command: npm run start
 
     billing:
-        image: perimeter81/billing
+        image: gcr.io/mussia6/billing
         build:
             context: packages/services/billing
             dockerfile: Dockerfile
             args:
-                - modulePath=/packages/billing
+                - modulePath=/packages/services/billing
         container_name: billing
         environment:
             - NODE_ENV_DOCKER=true
