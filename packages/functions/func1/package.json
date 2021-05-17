@@ -1,0 +1,53 @@
+{
+  "name": "func1",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "yurikrupnik <krupnik.yuri@gmail.com>",
+  "homepage": "https://github.com/yurikrupnik/mussia6/tree/main/packages/func1#readme",
+  "license": "ISC",
+  "main": "index.js",
+  "engines": {
+    "node": "10"
+  },
+  "private": true,
+  "files": [
+    "dist"
+  ],
+  "watch": {
+    "fucntion": "dist/*.js"
+  },
+  "config": {
+    "port": "3332"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yurikrupnik/mussia6.git",
+    "directory": "packages/functions/func1"
+  },
+  "scripts": {
+    "build:watch": "rollup --config=../../../rollup.config.functions.ts -w",
+    "watch": "npm-watch fucntion",
+    "fucntion": "functions-framework --target=func1 --source=dist --port=$npm_package_config_port",
+    "dev": "run-p build:watch watch",
+    "prebuild": "rimraf dist",
+    "lint": "eslint src --ext .ts,.tsx --color",
+    "test": "jest src --colors",
+    "build": "rollup --config=../../../rollup.config.functions.ts",
+    "predeploy": "npm run build",
+    "deploy": "bash ../../../scripts/deploy-to-cloud-functions.sh"
+  },
+  "bugs": {
+    "url": "https://github.com/yurikrupnik/mussia6/issues"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@google-cloud/functions-framework": "^1.7.1",
+    "@types/express": "^4.17.11",
+    "npm-run-all": "^4.1.5",
+    "npm-watch": "^0.9.0",
+    "supertest": "^6.1.3"
+  }
+}

@@ -59,3 +59,14 @@ services:
     ports:
       - 5000:8080
     command: npm run dev
+
+  functions:
+    image: functions
+    build:
+      context: packages/functions
+    #      root: packages/functions
+    container_name: func1
+    ports:
+      - 3334:3334
+      - 3333:3333
+    command: npm run fucntion

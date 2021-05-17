@@ -14,7 +14,7 @@ COPY .eslintignore .
 COPY webpack.config.server.js .
 #COPY webpack.config.client.ts .
 COPY rollup.config.ts .
-#COPY rollup.config.functions.ts .
+COPY rollup.config.functions.ts .
 COPY lerna.json .
 COPY styleguide.config.js .
 COPY tsconfig.json .
