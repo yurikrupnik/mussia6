@@ -31,7 +31,7 @@ it("func1 test", () => {
     // @ts-ignore
     func1(<Request>req, res);
     expect(json).toHaveBeenCalledTimes(1);
-    expect(json).toHaveBeenCalledWith({ ok: "yes func1" });
+    expect(json).toHaveBeenCalledWith({ ok: "yes" });
     //     // expect(send.calls.length).toHaveBeenCalledTimes(1)
     //     // console.log('res.send.mock.calls', res.send.mock.calls);
     //     // console.log('res.send.mock.calls', res.send.calls.length);
