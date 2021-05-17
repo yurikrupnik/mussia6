@@ -7,6 +7,7 @@ const noop = require("lodash/noop");
 const nodeExternals = require("webpack-node-externals");
 const GenerateJsonPlugin = require("generate-json-webpack-plugin");
 const NodemonPlugin = require("nodemon-webpack-plugin");
+const SwaggerJSDocWebpackPlugin = require("swagger-jsdoc-webpack-plugin");
 // const CopyPlugin = require("copy-webpack-plugin");
 // const LoadablePlugin = require("@loadable/webpack-plugin");
 // const { ESBuildPlugin } = require("esbuild-loader");
@@ -62,6 +63,17 @@ module.exports = (env, argv) => {
                     start: `node ${filename}`
                 },
                 devDependencies: {}
+            }),
+            new SwaggerJSDocWebpackPlugin({
+                swaggerDefinition: {
+                    swagger: "2.0",
+                    info: {
+                        title: "Title",
+                        version: "1.0.0",
+                        description: "Description"
+                    }
+                },
+                apis: ["./src/server.ts"]
             }),
             // new CopyPlugin({
             //     patterns: [{ from: path.join(cwd, "app.yml") }]
