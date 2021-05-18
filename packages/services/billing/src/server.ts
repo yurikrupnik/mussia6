@@ -54,7 +54,9 @@ function api() {
      *         description: No auth token
      */
     route.get("/", (req, res) => {
-        res.status(200).send("ok from get");
+        res.status(200).json({
+            message: "ok from get"
+        });
     });
 
     /**

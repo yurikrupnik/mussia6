@@ -3,13 +3,15 @@ import copy from "rollup-plugin-copy";
 import esBuild from "rollup-plugin-esbuild";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import swagger from "rollup-plugin-swagger-jsdoc";
+import swagger from "rollup-plugin-swagger-jsdoc"; // the module does not have ts decs
 
 const cwd = process.cwd();
 
 const globals = {};
 
-const defaultModule = (args: any) => {
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+const defaultModule = (args) => {
     console.log("args", args); // eslint-disable-line
     return {
         input: "src/index.ts",
