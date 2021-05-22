@@ -36,6 +36,14 @@ module.exports = (phase) => {
 
     // next.config.js object
     return {
+        async rewrites() {
+            return [
+                {
+                    source: "/shit/hello",
+                    destination: "https://aris-8jo9nv6l.ew.gateway.dev/hello"
+                }
+            ];
+        },
         env: {
             RESTURL_SPEAKERS: (() => {
                 if (isDev) return `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/`;
