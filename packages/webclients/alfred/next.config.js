@@ -19,7 +19,7 @@ module.exports = (phase) => {
 
     // const env = {
     //     RESTURL_SPEAKERS: (() => {
-    //         if (isDev) return "http://localhost:3000/api/";
+    //         if (isDev) return "http:/6/localhost:3000/api/";
     //         if (isProd) {
     //             return "https://mussia5-next.vercel.app/api";
     //         }
