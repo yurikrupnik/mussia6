@@ -12,6 +12,9 @@
     "url": "git+https://github.com/yurikrupnik/mussia6.git",
     "directory": "packages/webclients/batman"
   },
+  "config": {
+    "port": 3000
+  },
   "scripts": {
     "dev": "next dev -p 4000",
     "build": "next build",
@@ -20,7 +23,8 @@
     "tsc": "tsc -noEmit",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "test": "jest . --colors",
-    "waypoint": "waypoint up"
+    "waypoint": "waypoint up",
+    "deploy": "bash ../../../scripts/deploy-to-cloud-run.sh"
   },
   "bugs": {
     "url": "https://github.com/yurikrupnik/mussia6/issues"

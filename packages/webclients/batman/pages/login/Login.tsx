@@ -24,11 +24,11 @@ import Hidden from "@material-ui/core/Hidden";
 // import DialogPasswordInfo from "../../components/uiComponents/DialogPasswordInfo";
 import { useRouter } from "next/router";
 // import TextField from "@/components/FormField"; // todo fix eslint
-import useSWR from "swr";
+// import useSWR from "swr";
 import { useUser } from "@auth0/nextjs-auth0";
 // import { NextPageContext } from "next";
 import TextField from "../../components/FormField";
-import fetcher from "../../src/fetch";
+// import fetcher from "../../src/fetch";
 // import { Context as Projects } from "../../api/projects/context";
 // import { validateEmail } from "../../utils/validation";
 // import loginStyles from "./LoginStyles";
@@ -46,8 +46,8 @@ const Login = () => {
     // console.log("loading", loading);
     const user = useUser();
     console.log("user", user); // eslint-disable-line
-    const { data, mutate } = useSWR("/api/users", fetcher);
-    console.log("{ data, mutate }", { data, mutate }); // eslint-disable-line
+    // const { data, mutate } = useSWR("/api/users", fetcher);
+    // console.log("{ data, mutate }", { data, mutate }); // eslint-disable-line
     // const classes = loginStyles();
     // const [shouldRender, setShouldRender] = useState(false);
     const router = useRouter();
@@ -62,7 +62,7 @@ const Login = () => {
     const [loading] = useState(false);
 
     const register = useCallback(() => {
-        router.push("/onboarding/25");
+        // router.push("/onboarding/25");
     }, [router]);
 
     const handleSignOut = useCallback(() => {

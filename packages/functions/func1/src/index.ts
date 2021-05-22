@@ -1,9 +1,87 @@
-// exports.function = (req, res) => {
-//     res.status(200).json({
-//         message: 'ok'
-//     });
-// };
-import { Request, Response } from "express";
+import express, { Request, Response, Router } from "express";
+import swaggerUi from "swagger-ui-express";
+import path from "path";
+import os from "os";
+
+const app = express();
+
+const api = () => {
+    const route = Router();
+    route.get("/fun1", (req, res) => {
+        res.status(200).json({
+            data: "all goossd"
+        });
+    });
+    route.get("/dam", (req, res) => {
+        res.status(200).json({
+            data: "all dam"
+        });
+    });
+    return route;
+};
+
+app.use(api());
+
+console.log("os.hostname()", os.hostname()); // eslint-disable-line
+app.use(swaggerUI(os.hostname())); // todo make generic
+
+function swaggerUI(url: string) {
+    // todo module
+    const r = Router();
+    /**
+     * @swagger
+     * /swagger:
+     *   get:
+     *     tags:
+     *       - Swagger
+     *     name: Swagger file
+     *     summary: Get swagger json
+     *     consumes:
+     *       - application/json
+     *     produces:
+     *       - application/json
+     *     responses:
+     *       200:
+     *         description: Send swagger.json file
+     */
+    r.get("/swagger", (req, res) => {
+        res.header("Content-Type", "application/json");
+        res.sendFile(path.join(__dirname, "swagger.json"));
+        // res.json({
+        //     aris: "tr"
+        // });
+    });
+    r.use("/doc", swaggerUi.serve);
+    /**
+     * @swagger
+     * /doc:
+     *   get:
+     *     tags:
+     *       - Swagger
+     *     name: Swagger
+     *     summary: Swagger ui
+     *     consumes:
+     *       - application/json
+     *     produces:
+     *       - text/html
+     *     responses:
+     *       200:
+     *         description: swagger ui
+     */
+    r.get(
+        "/doc",
+        // swaggerUi.setup(openapiSpecification)
+        swaggerUi.setup(
+            {},
+            {
+                swaggerOptions: {
+                    url: `${url}/swagger`
+                }
+            }
+        )
+    );
+    return r;
+}
 // import button from '@krupnik/button';
 // import axios from 'axios';
 // import chalk from 'chalk';
@@ -11,51 +89,40 @@ import { Request, Response } from "express";
 // import render from '@krupnik/render/dist/cjs/index';
 // import morgan from 'morgan/index';
 
-const func1 = (req: Request, res: Response) => {
-    // console.log("ok"); // eslint-disable-line
-    //     res.send(`<!DOCTYPE html>
-    // <head>
-    //   <title>Saying Hello</title>
-    // </head>
-    // <body>
-    //   Hello, <b>World!</b><br>
-    //   Hello, <b>dev.to!</b><br>
-    // </body>`);
-    res.status(200).json({ ok: "yes" });
-    // const dbURL = 'mongodb://yuri:ludmila900@ds263876.mlab.com:63876/client-app-projects';
-    // mongoose.connect(dbURL);
-    //
-    // mongoose.connection.on('connected', function(){
-    //     console.log(connected('Mongoose default connection is open to ', dbURL));
-    //     req.status(500).send('failsed');
-    // });
-    //
-    // mongoose.connection.on('error', function(err){
-    //     // console.log(error('Mongoose default connection has occured '+err+' error'));
-    //     req.status(500).send('failsed');
-    // });
-    //
-    // mongoose.connection.on('disconnected', function(){
-    //     console.log(disconnected('Mongoose default connection is disconnected'));
-    //     req.status(500).send('failsed');
-    // });
-    //
-    // process.on('SIGINT', function(){
-    //     mongoose.connection.close(function(){
-    //         req.status(500).send('failsed');
-    //         process.exit(0);
-    //     });
-    // });
-};
+const func1 = app;
 
+/**
+ * @swagger
+ * /:
+ *   get:
+ *     tags:
+ *       - Func3
+ *     name: Func3
+ *     summary: Find nothing
+ *     security:
+ *       - bearerAuth: []
+ *     consumes:
+ *       - application/json
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: A single project object
+ *       401:
+ *         description: No auth token
+ */
 const func3 = (req: Request, res: Response) => {
     res.status(200).json({
         ok: "yes funk 3"
     });
 };
-
+// const swagger = (req: Request, res: Response) => {
+//     res.status(200).json({
+//         ok: "yes funk 3"
+//     });
+// };
 // exports.func1 = func1;
-export { func1, func3 };
+export { func3, func1 };
 
 // function(req, res) => {
 //     function: res.status(200).json({

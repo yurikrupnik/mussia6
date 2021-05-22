@@ -3,14 +3,23 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import SearchIcon from "@material-ui/icons/Search";
 import Box from "@material-ui/core/Box";
+import useSwr from "swr";
 import TableProgressbar from "../components/TableProgressbar/TableProgressbar";
 import ApplicationStatus from "../components/ApplicationStatus/ApplicationStatus";
 import CompanyStatus from "../components/CompanyStatus/CompanyStatus";
 import { POCStauses } from "../src/types";
 import useRouter from "../hooks/useRouter";
 
+function fetcher(url: string) {
+    return fetch(url).then((r) => r.json());
+}
 const dashbaord = () => {
     const router = useRouter();
+    const { data } = useSwr(
+        "https://aris-8jo9nv6l.ew.gateway.dev/billing",
+        fetcher
+    );
+    console.log("data", data); // eslint-disable-line
     const clickHandler = useCallback(
         () => router.push(`accounts/account`),
         [router]

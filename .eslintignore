@@ -61,5 +61,6 @@ typings/
 # next.js build output
 .next
 
-packages/**/dist
-packages/**/**/size-plugin.json
+packages/**/**/dist
+packages/**/**/.env.local
+packages/webclients/batman/.env.local

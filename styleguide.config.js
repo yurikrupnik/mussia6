@@ -56,8 +56,8 @@ module.exports = {
             ignore: ["**/__tests__/*.tsx"]
         },
         {
-            name: "Typedoc",
-            href: "http://localhost:63342/perimeter81-monorepo/docs/typedoc/index.html"
+            name: "Typedoc", // todo fix for github pages url when prod/dev
+            href: "http://localhost:63342/mussia6/docs/typedoc/index.html"
         },
         {
             name: "Swagger",
@@ -81,7 +81,7 @@ module.exports = {
     //     // Wrapper: path.join(process.cwd(), 'StyleguidistMuiWrapper.jsx'),
     // },
     ignore: ["**/*.stories.jsx", "__mocks__/"],
-    styleguideDir: "docs/styleguide",
+    styleguideDir: "docs/",
     webpackConfig: {
         resolve: {
             extensions: [".json", ".js", ".jsx", ".css", ".scss"],

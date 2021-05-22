@@ -19,7 +19,7 @@ module.exports = (phase) => {
 
     // const env = {
     //     RESTURL_SPEAKERS: (() => {
-    //         if (isDev) return "http://localhost:3000/api/";
+    //         if (isDev) return "http:/6/localhost:3000/api/";
     //         if (isProd) {
     //             return "https://mussia5-next.vercel.app/api";
     //         }
@@ -36,6 +36,14 @@ module.exports = (phase) => {
 
     // next.config.js object
     return {
+        async rewrites() {
+            return [
+                {
+                    source: "/gateway/:path*",
+                    destination: "https://aris-8jo9nv6l.ew.gateway.dev/:path*"
+                }
+            ];
+        },
         env: {
             RESTURL_SPEAKERS: (() => {
                 if (isDev) return `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/`;
