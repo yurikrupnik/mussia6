@@ -23,11 +23,13 @@ function getHello() {
 handler.get((req: NextApiRequest, res: NextApiResponse) => {
     // console.log("req.query", req.query); // eslint-disable-line
     // console.log("req.headers", req.headers); // eslint-disable-line
+    // res.status(200);
+    // res.json({ aris: true });
     getHello()
         // Model.find()
         .then((resp) => {
             res.statusCode = 200;
-            res.json(resp);
+            res.json(resp.data);
         })
         .catch((err) => {
             res.statusCode = 500;
