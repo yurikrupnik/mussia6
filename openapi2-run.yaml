@@ -27,6 +27,39 @@ paths:
           description: A successful response
           schema:
             type: string
+  /billing/dam:
+    get:
+      summary: Assets
+      operationId: billingDam
+      x-google-backend:
+        address: https://billing-iinq65tiba-ew.a.run.app/dam
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+  /billing/doc:
+    get:
+      summary: Assets
+      operationId: billingDoc
+      x-google-backend:
+        address: https://billing-iinq65tiba-ew.a.run.app/doc
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+  /billing/swagger:
+    get:
+      summary: Assets
+      operationId: billingSwagger
+      x-google-backend:
+        address: https://billing-iinq65tiba-ew.a.run.app/swagger
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
   /hello:
     get:
       summary: Cloud Run hello world

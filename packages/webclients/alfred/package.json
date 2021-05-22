@@ -12,6 +12,9 @@
     "url": "git+https://github.com/yurikrupnik/mussia6.git",
     "directory": "packages/webclients/alfred"
   },
+  "config": {
+    "port": 3000
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

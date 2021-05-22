@@ -16,6 +16,7 @@
     "directory": "packages/services/billing"
   },
   "config": {
+    "port": 5000,
     "modulePath": "/packages/services/billing"
   },
   "scripts": {

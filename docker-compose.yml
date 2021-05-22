@@ -62,5 +62,5 @@ services:
             - DB_PASSWORD=elmtmVSesRtpz3de
             - DATABASE_URL=@cluster0.xliif.gcp.mongodb.net/
         ports:
-            - 5000:8080
+            - 5000:5000
         command: npm run start
