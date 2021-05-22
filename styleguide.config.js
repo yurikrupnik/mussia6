@@ -56,7 +56,7 @@ module.exports = {
             ignore: ["**/__tests__/*.tsx"]
         },
         {
-            name: "Typedoc",
+            name: "Typedoc", // todo fix for github pages url when prod/dev
             href: "http://localhost:63342/mussia6/docs/typedoc/index.html"
         },
         {
