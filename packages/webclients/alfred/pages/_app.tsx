@@ -39,9 +39,9 @@ const createClasses = makeStyles((theme) => ({
     }
 }));
 
-function getHello() {
+function getBilling() {
     // return axios.get("https://aris-8jo9nv6l.ew.gateway.dev/hello");
-    return axios.get("/shit/hello");
+    return axios.get("/gateway/billing");
     // .then((resp) => {
     //     res.statusCode = 200;
     //     res.json(resp);
@@ -59,7 +59,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
     console.log("useruser", user); // eslint-disable-line
 
     useEffect(() => {
-        getHello()
+        getBilling()
             .then((r) => {
                 console.log("r", r.data);
             })

@@ -39,8 +39,8 @@ module.exports = (phase) => {
         async rewrites() {
             return [
                 {
-                    source: "/shit/hello",
-                    destination: "https://aris-8jo9nv6l.ew.gateway.dev/hello"
+                    source: "/gateway/:path*",
+                    destination: "https://aris-8jo9nv6l.ew.gateway.dev/:path*"
                 }
             ];
         },
