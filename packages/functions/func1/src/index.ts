@@ -1,6 +1,7 @@
 import express, { Request, Response, Router } from "express";
 import swaggerUi from "swagger-ui-express";
 import path from "path";
+import os from "os";
 
 const app = express();
 
@@ -20,7 +21,9 @@ const api = () => {
 };
 
 app.use(api());
-app.use(swaggerUI("http://localhost:3332")); // todo make generic
+
+console.log("os.hostname()", os.hostname()); // eslint-disable-line
+app.use(swaggerUI(os.hostname())); // todo make generic
 
 function swaggerUI(url: string) {
     // todo module
@@ -85,13 +88,16 @@ function swaggerUI(url: string) {
 // import mongoose from 'mongoose';
 // import render from '@krupnik/render/dist/cjs/index';
 // import morgan from 'morgan/index';
+
+const func1 = app;
+
 /**
  * @swagger
  * /:
  *   get:
  *     tags:
- *       - Func1
- *     name: Func1
+ *       - Func3
+ *     name: Func3
  *     summary: Find nothing
  *     security:
  *       - bearerAuth: []
@@ -105,8 +111,6 @@ function swaggerUI(url: string) {
  *       401:
  *         description: No auth token
  */
-const func1 = app;
-
 const func3 = (req: Request, res: Response) => {
     res.status(200).json({
         ok: "yes funk 3"

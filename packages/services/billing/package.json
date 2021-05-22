@@ -15,6 +15,9 @@
     "url": "git+https://github.com/yurikrupnik/mussia6.git",
     "directory": "packages/services/billing"
   },
+  "config": {
+    "modulePath": "/packages/services/billing"
+  },
   "scripts": {
     "dev": "webpack --config=../../../webpack.config.server.js -w --color",
     "prebuild": "rimraf dist",
@@ -22,7 +25,8 @@
     "test": "jest src --colors --detectOpenHandles",
     "build": "run-p build:code",
     "build:code": "webpack --config=../../../webpack.config.server.js --color",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "deploy": "bash ../../../scripts/deploy-to-cloud-run.sh"
   },
   "bugs": {
     "url": "https://github.com/yurikrupnik/mussia6/issues"

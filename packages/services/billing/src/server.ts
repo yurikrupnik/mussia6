@@ -38,30 +38,21 @@ function api() {
      *       - application/json
      *     produces:
      *       - application/json
-     *     parameters:
-     *       - in: query
-     *         name: username
-     *         schema:
-     *           type: string
-     *         required:
-     *           - username
      *     responses:
      *       200:
      *         description: A single project object
-     *         schema:
-     *           $ref: '#/definitions/Project'
      *       401:
      *         description: No auth token
      */
     route.get("/", (req, res) => {
         res.status(200).json({
-            message: "ok from get"
+            message: "ok from get v2"
         });
     });
 
     /**
      * @swagger
-     * /:{id}:
+     * /{id}:
      *   get:
      *     tags:
      *       - Billing
@@ -74,7 +65,7 @@ function api() {
      *     produces:
      *       - application/json
      *     parameters:
-     *       - in: query
+     *       - in: path
      *         name: id
      *         schema:
      *           type: string
@@ -83,8 +74,6 @@ function api() {
      *     responses:
      *       200:
      *         description: A single project object
-     *         schema:
-     *           $ref: '#/definitions/Project'
      *       401:
      *         description: No auth token
      */
@@ -92,6 +81,33 @@ function api() {
         res.status(200).send(`ok from get ${req.params.id}`);
     });
 
+    /**
+     * @swagger
+     * /:
+     *   post:
+     *     tags:
+     *       - Billing
+     *     name: Find billings by id
+     *     summary: Finds billing information
+     *     security:
+     *       - bearerAuth: []
+     *     consumes:
+     *       - application/json
+     *     produces:
+     *       - application/json
+     *     parameters:
+     *       - in: path
+     *         name: id
+     *         schema:
+     *           type: string
+     *         required:
+     *           - id
+     *     responses:
+     *       200:
+     *         description: A single project object
+     *       401:
+     *         description: No auth token
+     */
     route.post("/", (req, res) => {
         res.status(200).send(`ok from post ${req.body}`);
     });
@@ -126,6 +142,12 @@ function swaggerUI(url: string) {
 }
 
 // app.use(swaggerUI(`${host}:${port}`));
+app.use((req, res, next) => {
+    console.log("req.url", req.url);
+    console.log("req.hostname", req.hostname);
+    next();
+    // swaggerUI(req.hostname);
+});
 app.use(swaggerUI("http://localhost:8080"));
 
 app.use(api());

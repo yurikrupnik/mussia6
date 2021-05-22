@@ -3,7 +3,7 @@ import copy from "rollup-plugin-copy";
 import esBuild from "rollup-plugin-esbuild";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import swagger from "rollup-plugin-swagger-jsdoc"; // the module does not have ts decs
+import swagger from "rollup-plugin-swagger-jsdoc"; // the module does not have ts config
 
 const cwd = process.cwd();
 

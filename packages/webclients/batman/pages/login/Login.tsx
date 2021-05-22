@@ -46,8 +46,8 @@ const Login = () => {
     // console.log("loading", loading);
     const user = useUser();
     console.log("user", user); // eslint-disable-line
-    const { data, mutate } = useSWR("/api/users", fetcher);
-    console.log("{ data, mutate }", { data, mutate }); // eslint-disable-line
+    // const { data, mutate } = useSWR("/api/users", fetcher);
+    // console.log("{ data, mutate }", { data, mutate }); // eslint-disable-line
     // const classes = loginStyles();
     // const [shouldRender, setShouldRender] = useState(false);
     const router = useRouter();

@@ -22,7 +22,8 @@
     "docs:build": "run-p styleguidist:build typedoc",
     "docs:dev:server": "npx http-server docs/styleguide",
     "start": "run-p docs:dev docs:dev:server",
-    "dev:all": "run-p dev start"
+    "dev:all": "run-p dev start",
+    "deploy": "lerna run --parallel deploy"
   },
   "repository": {
     "type": "git",

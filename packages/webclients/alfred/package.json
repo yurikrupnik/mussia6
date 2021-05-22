@@ -20,7 +20,8 @@
     "tsc": "tsc -noEmit",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "test": "jest . --colors",
-    "waypoint": "waypoint up"
+    "waypoint": "waypoint up",
+    "deploy": "bash ../../../scripts/deploy-to-cloud-run.sh"
   },
   "bugs": {
     "url": "https://github.com/yurikrupnik/mussia6/issues"
