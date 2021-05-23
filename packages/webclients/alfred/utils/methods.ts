@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import mongoose, { Document } from "mongoose";
+import mongoose, { Document, QueryOptions } from "mongoose";
 
 const responseId = (req: NextApiRequest, res: NextApiResponse) => {
     const { id } = req.query;
@@ -28,9 +28,22 @@ function respondWithResult<T>(res: NextApiResponse) {
 }
 
 const list =
-    <T extends mongoose.Model<Document>>(Model: T) =>
+    <T extends mongoose.Model<any>>(Model: T) =>
     (req: NextApiRequest, res: NextApiResponse) => {
-        Model.find(req.query)
+        const { projections, page, limit = 100 } = req.query;
+
+        const config: QueryOptions = {};
+        if (page) {
+            config.skip = Number(limit) * Number(page) || Number(limit);
+            config.limit = Number(limit);
+        }
+
+        console.log("config", config);
+        Model.find({}, projections, config)
+            // .populate({
+            //     path: "userGroup",
+            //     select: "name"
+            // })
             .then(respondWithResult(res))
             .catch(handleError(res));
     };

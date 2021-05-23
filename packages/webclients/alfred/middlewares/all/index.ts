@@ -3,12 +3,15 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 // import passport from "@/middlewares/passport";
-// import connectDb from "../db";
+import connectDb from "../db";
 // import session from "@/middlewares/session";
 
 // eslint-disable-next-line
-const handler = nc().use(morgan("dev")).use(helmet()).use(cookieParser());
-// .use(connectDb);
+const handler = nc()
+    .use(morgan("dev"))
+    .use(helmet())
+    .use(cookieParser())
+    .use(connectDb);
 
 // .use(passport.initialize())
 // .use(passport.session())
