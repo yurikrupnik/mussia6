@@ -131,7 +131,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      CLOUDSDK_PYTHON: 2.7.16
+#      CLOUDSDK_PYTHON: 2.7.16
       #      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
@@ -160,8 +160,8 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-#      - run: git config --global user.email krupnik.yuri@gmail.com && git config --global user.name yurikrupnik
-#      - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
+      - run: git config --global user.email krupnik.yuri@gmail.com && git config --global user.name yurikrupnik
+      - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@master
         with:
