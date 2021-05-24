@@ -173,3 +173,4 @@ jobs:
       - name: Docker pull lerna
         run: docker pull gcr.io/mussia6/lerna
       - run: docker-compose build
+      - run: docker-compose push
