@@ -47,7 +47,7 @@ steps:
           - "-t"
           - "$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA"
           - packages/services/billing
-          - "--build-args"
+          - "--build-arg"
           - /packages/services/billing
           - "-f"
           - packages/services/billing
