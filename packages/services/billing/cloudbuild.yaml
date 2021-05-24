@@ -9,7 +9,7 @@ steps:
     #      - deploy
     #      - [FUNCTION_NAME]
     #      - --source=.
-    #      - --trigger-http
+    #      - --trigger-httpd
 
     #  - name: 'node:12.10.0'
     #    args: ['run', 'postinstall']
