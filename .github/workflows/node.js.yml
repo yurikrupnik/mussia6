@@ -123,6 +123,6 @@ jobs:
       - run: |-
           gcloud --quiet auth configure-docker
       - name: Docker pull lerna
-        run: docker pull gcr.io/mussia4-299720/lerna
+        run: docker pull gcr.io/mussia6/lerna
       - run: docker build ./packages/services/billing -t billing --build-arg modulePath=/packages/services/billing
 
