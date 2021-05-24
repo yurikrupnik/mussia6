@@ -11,7 +11,6 @@ gc_image=gcr.io/mussia6/$npm_package_name
 #echo reposo directory $npm_package_files
 #echo package name $npm_package_name
 #echo package version $npm_package_version
-#echo package version $npm_package
 
 docker build -t $gc_image . \
   --force-rm \
