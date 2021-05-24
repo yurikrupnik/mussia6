@@ -38,7 +38,7 @@ const list =
             config.limit = Number(limit);
         }
 
-        console.log("config", config);
+        // console.log("config", config);
         Model.find({}, projections, config)
             // .populate({
             //     path: "userGroup",
