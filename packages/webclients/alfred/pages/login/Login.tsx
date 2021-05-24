@@ -25,7 +25,7 @@ import Hidden from "@material-ui/core/Hidden";
 import { useRouter } from "next/router";
 // import TextField from "@/components/FormField"; // todo fix eslint
 // import useSWR from "swr";
-import { useUser } from "@auth0/nextjs-auth0";
+// import { useUser } from "@auth0/nextjs-auth0";
 // import { NextPageContext } from "next";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
@@ -53,12 +53,16 @@ const uiConfig = {
     // We will display Google and Facebook as auth providers.
     signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.GithubAuthProvider.PROVIDER_ID,
         firebase.auth.EmailAuthProvider.PROVIDER_ID,
         firebase.auth.FacebookAuthProvider.PROVIDER_ID
     ],
     callbacks: {
         // Avoid redirects after sign-in.
-        signInSuccessWithAuthResult: () => false
+        signInSuccessWithAuthResult: (a: any) => {
+            console.log("-------------aAA", a);
+            return false;
+        }
     }
 };
 
@@ -69,19 +73,20 @@ const Login = () => {
     // const [session] = useSession();
     // console.log("session", session); // eslint-disable-line
     // console.log("loading", loading);
+    const [user] = useState(""); // Local signed-in state.
     const [isSignedIn, setIsSignedIn] = useState(false); // Local signed-in state.
 
     // Listen to the Firebase Auth state and set the local state.
     useEffect(() => {
         const unregisterAuthObserver = firebase
             .auth()
-            .onAuthStateChanged((user) => {
-                console.log("user", user);
-                setIsSignedIn(!!user);
+            .onAuthStateChanged((userr) => {
+                console.log("user", userr);
+                setIsSignedIn(!!userr);
             });
         return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
     }, []);
-    const user = useUser();
+    // const user = useUser();
     console.log("user", user); // eslint-disable-line
     console.log("isSignedIn", isSignedIn); // eslint-disable-line
     // const { data, mutate } = useSWR("/api/users", fetcher);

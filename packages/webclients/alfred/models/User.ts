@@ -38,24 +38,7 @@ const usersRoles = ["editor", "finance", "admin", "crm"];
 //     creditCardNumber?: string;
 // }
 
-// interface UserFront extends Document {
-//     email: string;
-//     password: string;
-//     token: string;
-//     role: string;
-//     image: string;
-//
-//     firstName: string;
-//     // id?: string;
-//     lastName?: string;
-//     fullName?: boolean;
-//
-//     isActive?: boolean;
-//     creditCardNumber?: string;
-//     provider: "local" | "google";
-// }
-
-type UserFront = {
+interface UserFront {
     email: string;
     password: string;
     token: string;
@@ -70,7 +53,24 @@ type UserFront = {
     isActive?: boolean;
     creditCardNumber?: string;
     provider: "local" | "google";
-};
+}
+
+// type UserFront = {
+//     email: string;
+//     password: string;
+//     token: string;
+//     role: string;
+//     image: string;
+//
+//     firstName: string;
+//     // id?: string;
+//     lastName?: string;
+//     fullName?: boolean;
+//
+//     isActive?: boolean;
+//     creditCardNumber?: string;
+//     provider: "local" | "google";
+// };
 
 type User = Pick<SchemaTimestampsConfig, SchemaFilter> & UserFront;
 
@@ -91,7 +91,7 @@ type User = Pick<SchemaTimestampsConfig, SchemaFilter> & UserFront;
 //     provider: "local" | "google";
 // }
 
-type UserDocument = User;
+type UserDocument = User & Document;
 // type UserDocument = User;
 // interface UserDocument extends User,Document
 
@@ -182,7 +182,7 @@ UsersSchema.virtual("fullName").get(function fullName(this: UserDocument) {
     return `${this.firstName} ${this.lastName}`;
 });
 
-UsersSchema.statics.findMyCompany = function findByName(id: string) {
+UsersSchema.statics.hashPassword = function findByName(id: string) {
     return this.find({ name: new RegExp(id, "i") });
 };
 
