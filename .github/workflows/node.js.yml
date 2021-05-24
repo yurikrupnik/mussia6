@@ -175,7 +175,9 @@ jobs:
 #      - name: Docker pull lerna
       - run: docker pull gcr.io/mussia6/lerna
       - run: docker-compose build
-      - run: docker-compose push
+      - run: docker push gcr.io/mussia6/alfred
+      - run: docker push gcr.io/mussia6/billing
+#      - run: docker-compose push
 
   npm-deploy:
     runs-on: ubuntu-latest
