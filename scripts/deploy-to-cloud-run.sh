@@ -2,10 +2,8 @@
 
 set -e
 
-#name=$npm_package_config_docker_image_org_name/$npm_package_config_docker_image_name
 gc_image=gcr.io/mussia6/$npm_package_name
 #dam=/$npm_package_repository_directory
-
 
 docker build -t $gc_image . \
   --force-rm \
