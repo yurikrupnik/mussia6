@@ -48,7 +48,7 @@ steps:
           - "$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA"
           - packages/api
           - "-f"
-          - packages/api/languages
+          - packages/services/billing
       id: Build
     - name: gcr.io/cloud-builders/docker
       args:
