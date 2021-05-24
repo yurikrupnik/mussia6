@@ -54,7 +54,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
-#      - run: npm whoami
       - name: Tsc
         run: npm run tsc -- --since
 
@@ -171,4 +170,4 @@ jobs:
           #            run: docker build -t lerna . && docker ps
       - run: |-
            gcloud --quiet auth configure-docker
-      - run: docker-compose build --parallel
+      - run: docker-compose build
