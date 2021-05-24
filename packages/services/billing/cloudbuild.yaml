@@ -1,5 +1,5 @@
 steps:
-    - name: "node16"
+    - name: node
       entrypoint: "npm"
       args: ["ci"]
       id: ci
