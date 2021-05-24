@@ -6,11 +6,6 @@ set -e
 gc_image=gcr.io/mussia6/$npm_package_name
 #dam=/$npm_package_repository_directory
 
-#echo Aris $npm_package_repository_directory $npm_package_name
-#echo $gc_image
-#echo reposo directory $npm_package_files
-#echo package name $npm_package_name
-#echo package version $npm_package_version
 
 docker build -t $gc_image . \
   --force-rm \
