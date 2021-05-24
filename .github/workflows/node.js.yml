@@ -126,7 +126,7 @@ jobs:
 #        run: docker pull gcr.io/mussia6/lerna
       - run: docker build ./packages/services/billing -t gcr.io/mussia6/billing --build-arg modulePath=/packages/services/billing
       - run: docker push gcr.io/mussia6/billing
-      - run: gcloud run deploy billing --image $gc_image gcr.io/mussia6/billing --platform managed --allow-unauthenticated --region europe-west1
+      - run: gcloud run deploy billing --image gcr.io/mussia6/billing --platform managed --allow-unauthenticated --region europe-west1
   build-compose:
     runs-on: ubuntu-latest
     env:
