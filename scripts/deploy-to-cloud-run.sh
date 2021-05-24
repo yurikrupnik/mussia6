@@ -3,7 +3,6 @@
 set -e
 
 gc_image=gcr.io/mussia6/$npm_package_name
-#dam=/$npm_package_repository_directory
 
 docker build -t $gc_image . \
   --force-rm \
