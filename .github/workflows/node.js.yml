@@ -159,16 +159,16 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-       - run: git config --global user.email krupnik.yuri@gmail.com && git config --global user.name yurikrupnik
-       - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
-       - name: Set up Cloud SDK
-         uses: google-github-actions/setup-gcloud@master
-         with:
-           project_id: mussia6
+      - run: git config --global user.email krupnik.yuri@gmail.com && git config --global user.name yurikrupnik
+      - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: mussia6
            #                project_id: ${{ secrets.GCP_PROJECT_ID }}
-           service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-           export_default_credentials: true
-           #            run: docker build -t lerna . && docker ps
-       - run: |-
+          service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          export_default_credentials: true
+          #            run: docker build -t lerna . && docker ps
+      - run: |-
            gcloud --quiet auth configure-docker
-       - run: docker-compose build --parallel
+      - run: docker-compose build --parallel
