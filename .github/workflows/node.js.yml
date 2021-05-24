@@ -112,5 +112,17 @@ jobs:
 
       - run: git config --global user.email krupnik.yuri@gmail.com && git config --global user.name yurikrupnik
       - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: mussia6
+          #                project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          export_default_credentials: true
+          #            run: docker build -t lerna . && docker ps
+      - run: |-
+          gcloud --quiet auth configure-docker
+      - name: Docker pull lerna
+        run: docker pull gcr.io/mussia4-299720/lerna
       - run: docker build ./packages/services/billing -t billing --build-arg modulePath=/packages/services/billing
 
