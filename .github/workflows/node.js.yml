@@ -170,4 +170,6 @@ jobs:
           #            run: docker build -t lerna . && docker ps
       - run: |-
            gcloud --quiet auth configure-docker
+      - name: Docker pull lerna
+        run: docker pull gcr.io/mussia6/lerna
       - run: docker-compose build
