@@ -2,6 +2,7 @@
 
 set -eo pipefail
 
+git status
 if [[ "$BRANCH_NAME" = "main" ]];
 then
   npx lerna publish patch --yes --no-push --conventional-commits
