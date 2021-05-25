@@ -28,10 +28,10 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
-          always-auth: true
+#          always-auth: true
           node-version: '14.x'
           registry-url: https://registry.npmjs.org/
-          scope: '@perimeter81'
+#          scope: '@perimeter81'
 
       - name: Cache node modules
         uses: actions/cache@v2
