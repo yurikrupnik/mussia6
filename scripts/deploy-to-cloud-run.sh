@@ -10,7 +10,7 @@ docker build -t $gc_image . \
 
 echo 'Finished building'
 #docker tag $name \
-#  $gc_image
+#  $gc_images
 #
 docker push $gc_image
 
