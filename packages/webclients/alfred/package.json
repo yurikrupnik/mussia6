@@ -23,8 +23,7 @@
     "tsc": "tsc -noEmit",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "test": "jest . --colors",
-    "waypoint": "waypoint up",
-    "deploy": "bash ../../../scripts/deploy-to-cloud-run.sh"
+    "waypoint": "waypoint up"
   },
   "bugs": {
     "url": "https://github.com/yurikrupnik/mussia6/issues"
@@ -60,5 +59,8 @@
     "@types/morgan": "1.9.2",
     "rimraf": "3.0.2",
     "typescript": "4.2.4"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   }
 }
