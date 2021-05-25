@@ -13,8 +13,7 @@ echo 'Finished building'
 #  $gc_image
 #
 docker push $gc_image
-#echo 'Finished pushing'
-#
+
 gcloud run deploy $npm_package_name \
   --image $gc_image \
   --platform managed \

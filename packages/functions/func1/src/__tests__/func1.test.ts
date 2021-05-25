@@ -6,11 +6,14 @@ import request from "supertest";
 // const { func2 } = require("../index");
 import { func1 } from "../index";
 //
+it("should ", () => {
+    expect(1).toBe(1);
+});
 // function chainObject(this: never) {
 //     return this;
 // }
 describe("GET /fun1", () => {
-    it("responds with json", async (done) => {
+    it("responds with json", (done) => {
         request(func1)
             .get("/fun1")
             .set("Accept", "application/json")
@@ -25,7 +28,7 @@ describe("GET /fun1", () => {
 });
 
 describe("GET /dam", () => {
-    it("responds with json", async (done) => {
+    it("responds with json", (done) => {
         request(func1)
             .get("/dam")
             .set("Accept", "application/json")
@@ -33,23 +36,23 @@ describe("GET /dam", () => {
             .expect(200, done);
     });
 });
-
-// todo fix - fails
-// describe("GET /swagger", () => {
-//     it("responds with json", async (done) => {
-//         request(func1)
-//             .get("/swagger")
-//             // .set("Accept", "application/json")
-//             // .expect("Content-Type", /text/)
-//             // .expect("Content-Type", /json/)
-//             .expect("Content-Type", "text/html; charset=utf-8")
 //
-//             .expect(200, done);
-//     });
-// });
-
+// // todo fix - fails
+// // describe("GET /swagger", () => {
+// //     it("responds with json", async (done) => {
+// //         request(func1)
+// //             .get("/swagger")
+// //             // .set("Accept", "application/json")
+// //             // .expect("Content-Type", /text/)
+// //             // .expect("Content-Type", /json/)
+// //             .expect("Content-Type", "text/html; charset=utf-8")
+// //
+// //             .expect(200, done);
+// //     });
+// // });
+//
 describe("GET /doc", () => {
-    it("responds with html", async (done) => {
+    it("responds with html", (done) => {
         request(func1)
             .get("/doc/")
             .set("Accept", "text/html")
