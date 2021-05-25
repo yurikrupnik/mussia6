@@ -65,11 +65,12 @@ jobs:
       - name: Build
         run: npm run build -- --since
       - uses: nelonoel/branch-name@v1.0.1
-      - name: NPN Publish
-        run: npm run npm-publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      - uses: npx lerna changed
+#      - name: NPN Publish
+#        run: npm run npm-publish
+#        env:
+#          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+#          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 #  npm-publish:
 #    runs-on: ubuntu-latesdt
 #    steps:
