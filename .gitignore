@@ -105,3 +105,6 @@ dist
 
 .idea
 
+packages/webclients/alfred/.env.local
+packages/webclients/batman/.env.local
+

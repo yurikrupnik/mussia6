@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Form, Formik } from "formik";
 // import { useToggle } from "react-use";
 // import { signOut, signin } from "next-auth/client";
@@ -24,11 +24,13 @@ import Hidden from "@material-ui/core/Hidden";
 // import DialogPasswordInfo from "../../components/uiComponents/DialogPasswordInfo";
 import { useRouter } from "next/router";
 // import TextField from "@/components/FormField"; // todo fix eslint
-import useSWR from "swr";
-import { useUser } from "@auth0/nextjs-auth0";
+// import useSWR from "swr";
+// import { useUser } from "@auth0/nextjs-auth0";
 // import { NextPageContext } from "next";
+import firebase from "firebase";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import TextField from "../../components/FormField";
-import fetcher from "../../src/fetch";
+// import fetcher from "../../src/fetch";
 // import { Context as Projects } from "../../api/projects/context";
 // import { validateEmail } from "../../utils/validation";
 // import loginStyles from "./LoginStyles";
@@ -37,6 +39,33 @@ import fetcher from "../../src/fetch";
 // import { Context as LanguagesTypes } from "../../api/languages/context";
 // import { Context as Currencies } from "../../api/currencies/context";
 
+const config = {
+    apiKey: "AIzaSyDzJ-RGcbiYmOawppW-Sopc7oN5jyTBF1I",
+    authDomain: "mussia6.firebaseapp.com"
+};
+if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+}
+// Configure FirebaseUI.
+const uiConfig = {
+    // Popup signin flow rather than redirect flow.
+    signInFlow: "popup",
+    // We will display Google and Facebook as auth providers.
+    signInOptions: [
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.GithubAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID,
+        firebase.auth.FacebookAuthProvider.PROVIDER_ID
+    ],
+    callbacks: {
+        // Avoid redirects after sign-in.
+        signInSuccessWithAuthResult: (a: any) => {
+            console.log("-------------aAA", a);
+            return false;
+        }
+    }
+};
+
 const logo = "";
 const logoBlack = "";
 const Login = () => {
@@ -44,10 +73,24 @@ const Login = () => {
     // const [session] = useSession();
     // console.log("session", session); // eslint-disable-line
     // console.log("loading", loading);
-    const user = useUser();
+    const [user] = useState(""); // Local signed-in state.
+    const [isSignedIn, setIsSignedIn] = useState(false); // Local signed-in state.
+
+    // Listen to the Firebase Auth state and set the local state.
+    useEffect(() => {
+        const unregisterAuthObserver = firebase
+            .auth()
+            .onAuthStateChanged((userr) => {
+                console.log("user", userr);
+                setIsSignedIn(!!userr);
+            });
+        return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
+    }, []);
+    // const user = useUser();
     console.log("user", user); // eslint-disable-line
-    const { data, mutate } = useSWR("/api/users", fetcher);
-    console.log("{ data, mutate }", { data, mutate }); // eslint-disable-line
+    console.log("isSignedIn", isSignedIn); // eslint-disable-line
+    // const { data, mutate } = useSWR("/api/users", fetcher);
+    // console.log("{ data, mutate }", { data, mutate }); // eslint-disable-line
     // const classes = loginStyles();
     // const [shouldRender, setShouldRender] = useState(false);
     const router = useRouter();
@@ -67,6 +110,7 @@ const Login = () => {
 
     const handleSignOut = useCallback(() => {
         // signOut();
+        firebase.auth().signOut();
     }, []);
 
     const handleSubmit = useCallback(
@@ -98,6 +142,12 @@ const Login = () => {
                     <img src={logoBlack} alt="logos" />
                 </Hidden>
             </Grid>
+            <h1>My App</h1>
+            <p>Please sign-in:</p>
+            <StyledFirebaseAuth
+                uiConfig={uiConfig}
+                firebaseAuth={firebase.auth()}
+            />
             <Grid
                 container
                 item
