@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.11](https://github.com/yurikrupnik/mussia6/compare/@creativearis/button@1.0.11-jest-update.0...@creativearis/button@1.0.11) (2021-05-25)
+
+**Note:** Version bump only for package @creativearis/button
+
+
+
+
+
 ## [1.0.11-jest-update.0](https://github.com/yurikrupnik/mussia6/compare/@creativearis/button@1.0.10...@creativearis/button@1.0.11-jest-update.0) (2021-05-25)
 
 **Note:** Version bump only for package @creativearis/button
