@@ -43,12 +43,12 @@ steps:
     - name: gcr.io/cloud-builders/docker
       args:
           - build
-          - ./packages/services/billing
+          - ./packages/services/service1
           - "-t"
           - "$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA"
 #          - packages/services/billing
           - "--build-arg"
-          - modulePath=/packages/services/billing
+          - modulePath=/packages/services/service1
       id: Build
     - name: gcr.io/cloud-builders/docker
       args:
