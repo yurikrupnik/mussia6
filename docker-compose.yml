@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
     db:
         image: mongo
@@ -24,28 +24,28 @@ services:
         command: npm run start
         depends_on:
             - db
-##
-#    batman:
-#        image: gcr.io/mussia6/batman
-#        build:
-#            context: packages/webclients/batman
-#            dockerfile: Dockerfile
-#        container_name: batman
-#        environment:
-#            - NODE_ENV_DOCKER=true
-#            - DB_USER=admin
-#              # dev db
-#            - MONGODB_URI=mongodb://0.0.0.0/jarvis
-#            - DB_PASSWORD=elmtmVSesRtpz3de
-#            - DATABASE_URL=@cluster0.xliif.gcp.mongodb.net/
-#        #            - DB_PASSWORD=elmtmVSesRtpz3de
-#        #            - DATABASE_URL=@cluster0.xliif.gcp.mongodb.net/
-#        # local db
-#        #            - DATABASE_URL=mongodb://db/rt-react
-#        ports:
-#            - 4000:3000
-#        command: npm run start
-
+    #
+    batman:
+        image: gcr.io/mussia6/batman
+        build:
+            context: packages/webclients/batman
+            dockerfile: Dockerfile
+        container_name: batman
+        environment:
+            - NODE_ENV_DOCKER=true
+            - DB_USER=admin
+              # dev db
+            - MONGODB_URI=mongodb://0.0.0.0/jarvis
+            - DB_PASSWORD=elmtmVSesRtpz3de
+            - DATABASE_URL=@cluster0.xliif.gcp.mongodb.net/
+        #            - DATABASE_URL=@cluster0.xliif.gcp.mongodb.net/
+        #            - DATABASE_URL=mongodb://db/rt-react
+        ports:
+            - 4000:3000
+        command: npm run start
+    #    envoy:
+    #        image: envoyproxy/envoy-dev
+    #        container_name: envoy
     billing:
         image: gcr.io/mussia6/billing
         build:
@@ -55,12 +55,30 @@ services:
                 - modulePath=/packages/services/billing
         container_name: billing
         environment:
+            - PORT=5000
             - NODE_ENV_DOCKER=true
-#            - PORT=5000
             - DB_USER=admin
             - MONGODB_URI=mongodb://0.0.0.0/jarvis
             - DB_PASSWORD=elmtmVSesRtpz3de
             - DATABASE_URL=@cluster0.xliif.gcp.mongodb.net/
         ports:
             - 5000:5000
+        command: npm run start
+    service1:
+        image: gcr.io/mussia6/service1
+        build:
+            context: packages/services/service1
+            dockerfile: Dockerfile
+            args:
+                - modulePath=/packages/services/service1
+        container_name: service1
+        environment:
+            - PORT=5001
+            - NODE_ENV_DOCKER=true
+            - DB_USER=admin
+            - MONGODB_URI=mongodb://0.0.0.0/jarvis
+            - DB_PASSWORD=elmtmVSesRtpz3de
+            - DATABASE_URL=@cluster0.xliif.gcp.mongodb.net/
+        ports:
+            - 5001:5001
         command: npm run start
