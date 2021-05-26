@@ -17,8 +17,6 @@ services:
             - MONGODB_URI=mongodb://0.0.0.0/jarvis
             - DB_PASSWORD=elmtmVSesRtpz3de
             - DATABASE_URL=@cluster0.xliif.gcp.mongodb.net/
-        # local db
-        #            - DATABASE_URL=mongodb://db/rt-react
         ports:
             - 3000:3000
         command: npm run start
