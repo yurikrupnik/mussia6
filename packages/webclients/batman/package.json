@@ -36,7 +36,7 @@
     "@sentry/tracing": "6.4.1",
     "axios": "0.21.1",
     "cookie-parser": "1.4.5",
-    "formik": "2.2.8",
+    "formik": "2.4.6",
     "helmet": "4.6.0",
     "lodash": "4.17.21",
     "mongoose": "5.12.11",
